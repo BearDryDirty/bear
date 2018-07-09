@@ -8,122 +8,114 @@
         <script src="./js/vue.js"></script>
     </head>
     <body>
-        <nav class="top">
-            <div class="center">
-                <div class="logo fl">
-                    <span class="logofont">&#xe691;</span>
-                    <i class="logofont">&#xe6ac;</i>
-                    <i class="logofont">&#xe67a;</i>
-                    <i class="logofont">&#xe679;</i>
-                    <i class="logofont">&#xe67f;</i>
+        <div id="app">
+            <nav class="top">
+                <div class="center">
+                    <div class="logo fl">
+                        <span class="logofont">&#xe691;</span>
+                        <i class="logofont">&#xe6ac;</i>
+                        <i class="logofont">&#xe67a;</i>
+                        <i class="logofont">&#xe679;</i>
+                        <i class="logofont">&#xe67f;</i>
+                    </div>
+                    <div class="nav fr">
+                        <a class="on" href="index.html">综合频道</a>
+                        <a href="record.html">纪录频道</a>
+                        <a href="farming.html">农业频道</a>
+                    </div>
                 </div>
-                <div class="nav fr">
-                    <a class="on" href="index.html">综合频道</a>
-                    <a href="record.html">纪录频道</a>
-                    <a href="farming.html">农业频道</a>
+            </nav>
+            <div class="wrap banner">
+                <span class="banner-font">&#xe691;</span>
+                <span class="banner-triangle">&#xe707;</span>
+                <span class="banner-slogen">YESTERDAY YOU SAID TOMORROW</span>
+            </div>
+            <div class="wrap">
+                <div class="center">
+                    <p class="public-tit">
+                        <span class="public-tit-main">- 网站收藏 -</span>
+                        <span class="public-tit-sub">wǎng zhàn shōu cáng</span>
+                    </p>
+                    <ul class="flex-box">
+                        <li v-for="(url,index) in link">
+                            <a target="_blank" v-bind:href="url.url">{{url.name}}</a>
+                        </li>
+                    </ul>
+                    <p class="public-tit">
+                        <span class="public-tit-main">- 我的笔记 -</span>
+                        <span class="public-tit-sub">wǒ de bǐ jì</span>
+                    </p>
+                    <div class="flex-box">
+                        <a class="flex-pic-box" onclick="pop(this)">
+                            <span class="bg1">Atom sync-settings</span>
+                            <i>Atom同步设置工具</i>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </nav>
-        <div class="wrap banner">
-            <span class="banner-font">&#xe691;</span>
-            <span class="banner-triangle">&#xe707;</span>
-            <span class="banner-slogen">YESTERDAY YOU SAID TOMORROW</span>
-        </div>
-        <div class="wrap">
-            <div class="center">
-                <p class="public-tit">
-                    <span class="public-tit-main">- 网站收藏 -</span>
-                    <span class="public-tit-sub">wǎng zhàn shōu cáng</span>
+            <footer>By BearDryDirty</footer>
+            <div class="pop">
+                <p class="pop-title">
+                    Ajax跨域
+                    <i class="pop-close transition" onclick="close_pop()">&#xe635;</i>
                 </p>
-                <ul class="flex-box">
-                    <li><a target="_blank" href="https://icomoon.io/">font图标下载-icomoon</a></li>
-                    <li><a target="_blank" href="http://www.iconfont.cn/">font图标下载-iconfont</a></li>
-                    <li><a target="_blank" href="http://www.easyicon.net/">图标下载-easyicon</a></li>
-                    <li><a target="_blank" href="http://www.qiuziti.com/">字体下载-qiuziti</a></li>
-                    <li><a target="_blank" href="http://www.60logo.com/">logo下载-60logo</a></li>
-                    <li><a target="_blank" href="http://instantlogosearch.com/">logo下载-instantlogosearch</a></li>
-                    <li><a target="_blank" href="http://bigjpg.com/">图片无损放大-bigjpg</a></li>
-                    <li><a target="_blank" href="https://color.adobe.com/zh/explore/newest/?time=all">配色-color</a></li>
-                    <li><a target="_blank" href="http://www.nipic.com/index.html">昵图网</a></li>
-                    <li><a target="_blank" href="http://cli.im/?jdfwkey=qvrim1">二维码生成</a></li>
-                    <li><a target="_blank" href="https://webgradients.com/">css渐变色</a></li>
-                    <li><a target="_blank" href="http://tool.lu/css/">css格式化</a></li>
-                    <li><a target="_blank" href="http://www.css88.com/jqapi-1.9/">JQ Api</a></li>
-                    <li><a target="_blank" href="http://www.imooc.com/">慕课网</a></li>
-                    <li><a target="_blank" href="http://699pic.com/">摄图网</a></li>
-                    <li><a target="_blank" href="http://echarts.baidu.com/index.html">图表-echars</a></li>
-                    <li><a target="_blank" href="http://gj.3gwen.com/tpbase64.html?kbl=">Base64转换</a></li>
-                    <li><a target="_blank" href="http://fanyi.baidu.com/">百度翻译</a></li>
-                    <li><a target="_blank" href="https://github.com/">GitHub</a></li>
-                    <li><a target="_blank" href="https://v3.bootcss.com/components/">Bootstrap</a></li>
-                    <li><a target="_blank" href="https://cn.vuejs.org/v2/api/">Vue.js</a></li>
-                    <li><a target="_blank" href="http://tool.oschina.net/">在线工具</a></li>
-                    <li><a target="_blank" href="http://www.daqianduan.com/">大前端</a></li>
-                    <li><a target="_blank" href="http://www.jq22.com/">JQ22</a></li>
-                    <li><a target="_blank" href="https://www.qdfuns.com/">前端网</a></li>
-                </ul>
-                <p class="public-tit">
-                    <span class="public-tit-main">- 我的笔记 -</span>
-                    <span class="public-tit-sub">wǒ de bǐ jì</span>
-                </p>
-                <div class="flex-box">
-                    <a class="flex-pic-box" onclick="pop(this)">
-                        <span class="bg1">Atom sync-settings</span>
-                        <i>Atom同步设置工具</i>
-                    </a>
-                    <a class="flex-pic-box" onclick="pop(this)">
-                        <span class="bg1">font-face</span>
-                        <i>CSS3 字体</i>
-                    </a>
-                    <a class="flex-pic-box" onclick="pop(this)">
-                        <span class="bg1">Ajax</span>
-                        <i>Ajax跨域</i>
-                    </a>
-                    <a class="flex-pic-box" onclick="pop(this)">
-                        <span class="bg1">clearfix</span>
-                        <i>清除浮动</i>
-                    </a>
-                    <a class="flex-pic-box" onclick="pop(this)">
-                        <span class="bg1">Atom sync-settings</span>
-                        <i>Atom同步设置工具</i>
-                    </a>
-                    <a class="flex-pic-box" onclick="pop(this)">
-                        <span class="bg1">font-face</span>
-                        <i>CSS3 字体</i>
-                    </a>
-                    <a class="flex-pic-box" onclick="pop(this)">
-                        <span class="bg1">Ajax</span>
-                        <i>Ajax跨域</i>
-                    </a>
-                    <a class="flex-pic-box" onclick="pop(this)">
-                        <span class="bg1">clearfix</span>
-                        <i>清除浮动</i>
-                    </a>
+                <div class="pop-wen">
+                    Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Aja<br /><br />x跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax
+                    Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Aja<br /><br />x跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax
+                    Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Aja<br /><br />x跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域
+                    <img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2801862717,279628383&fm=27&gp=0.jpg" />
+                    Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Aja<br /><br />x跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax
+                    Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Aja<br /><br />x跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax
+                    Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域
+                    <img src="http://img.zcool.cn/community/0142135541fe180000019ae9b8cf86.jpg@1280w_1l_2o_100sh.png">
+                    Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Aja<br /><br />x跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax
+                    Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域
                 </div>
             </div>
+            <div class="cover" onclick="close_pop()"></div>
         </div>
-        <footer>By BearDryDirty</footer>
-        <div class="pop">
-            <p class="pop-title">
-                Ajax跨域
-                <i class="pop-close transition" onclick="close_pop()">&#xe635;</i>
-            </p>
-            <div class="pop-wen">
-                Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Aja<br /><br />x跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax
-                Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Aja<br /><br />x跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax
-                Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Aja<br /><br />x跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域
-                <img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2801862717,279628383&fm=27&gp=0.jpg" />
-                Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Aja<br /><br />x跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax
-                Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Aja<br /><br />x跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax
-                Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域
-                <img src="http://img.zcool.cn/community/0142135541fe180000019ae9b8cf86.jpg@1280w_1l_2o_100sh.png">
-                Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Aja<br /><br />x跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax
-                Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域
-            </div>
-        </div>
-        <div class="cover" onclick="close_pop()"></div>
     </body>
-    <script src="./js/jquery-1.12.2.min.js"></script>
+    <!-- <script src="./js/jquery-1.12.2.min.js"></script>
     <script src="./js/jquery.nicescroll.min.js"></script>
-    <script src="./js/common.js"></script>
+    <script src="./js/common.js"></script> -->
+    <script>
+    new Vue({
+        el:"#app",
+        data:{
+            link:[
+                {url:'https://icomoon.io/',name:'font图标下载-icomoon'},
+                {url:'http://www.iconfont.cn/',name:'font图标下载-iconfont'},
+                {url:'http://www.easyicon.net/',name:'图标下载-easyicon'},
+                {url:'http://www.qiuziti.com/',name:'字体下载-qiuziti'},
+                {url:'http://www.60logo.com/',name:'logo下载-60logo'},
+                {url:'http://instantlogosearch.com/',name:'logo下载-instantlogosearch'},
+                {url:'http://bigjpg.com/',name:'图片无损放大-bigjpg'},
+                {url:'https://color.adobe.com/zh/explore/newest/?time=all',name:'配色-color'},
+                {url:'http://www.nipic.com/index.html',name:'昵图网'},
+                {url:'http://cli.im/?jdfwkey=qvrim1',name:'二维码生成'},
+                {url:'https://webgradients.com/',name:'css渐变色'},
+                {url:'http://tool.lu/css/',name:'css格式化'},
+                {url:'http://www.css88.com/jqapi-1.9/',name:'JQ Api'},
+                {url:'http://www.imooc.com/',name:'慕课网'},
+                {url:'http://699pic.com/',name:'摄图网'},
+                {url:'http://echarts.baidu.com/index.html',name:'图表-echars'},
+                {url:'http://gj.3gwen.com/tpbase64.html?kbl=',name:'Base64转换'},
+                {url:'http://fanyi.baidu.com/',name:'百度翻译'},
+                {url:'https://github.com/',name:'GitHub'},
+                {url:'https://v3.bootcss.com/components/',name:'Bootstrap'},
+                {url:'https://cn.vuejs.org/v2/api/',name:'Vue.js'},
+                {url:'http://tool.oschina.net/',name:'在线工具'},
+                {url:'http://www.daqianduan.com/',name:'大前端'},
+                {url:'http://www.jq22.com/',name:'JQ22'},
+                {url:'https://www.qdfuns.com/',name:'前端网'}
+            ]
+        },
+        methods:{
+
+        },
+        computed:{
+
+        }
+    })
+    </script>
 </html>
