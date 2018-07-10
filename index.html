@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="css/common.css">
         <link rel="stylesheet" href="css/index.css">
         <script src="./js/vue.js"></script>
+        <script src="./js/axios.min.js"></script>
     </head>
     <body>
         <div id="app">
@@ -32,12 +33,12 @@
             </div>
             <div class="wrap">
                 <div class="center">
-                    <p class="public-tit">
+                    <p class="public-tit" @click="post">
                         <span class="public-tit-main">- 网站收藏 -</span>
                         <span class="public-tit-sub">wǎng zhàn shōu cáng</span>
                     </p>
                     <ul class="flex-box">
-                        <li v-for="(url,index) in link">
+                        <li v-for="(url,index) in link" :key="index">
                             <a target="_blank" v-bind:href="url.url">{{url.name}}</a>
                         </li>
                     </ul>
@@ -46,76 +47,64 @@
                         <span class="public-tit-sub">wǒ de bǐ jì</span>
                     </p>
                     <div class="flex-box">
-                        <a class="flex-pic-box" onclick="pop(this)">
-                            <span class="bg1">Atom sync-settings</span>
-                            <i>Atom同步设置工具</i>
+                        <a class="flex-pic-box" v-for="(note,key) in note" :key="key" v-on:click="pop(key)">
+                            <span class="bg1">{{note.subTitle}}</span>
+                            <i>{{note.title}}</i>
                         </a>
                     </div>
                 </div>
             </div>
             <footer>By BearDryDirty</footer>
-            <div class="pop">
+            <div class="pop" v-bind:class="{show:show}">
                 <p class="pop-title">
-                    Ajax跨域
-                    <i class="pop-close transition" onclick="close_pop()">&#xe635;</i>
+                    {{noteTitle}} {{notesubTitle}}
+                    <i class="pop-close transition" @click="popClose">&#xe635;</i>
                 </p>
-                <div class="pop-wen">
-                    Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Aja<br /><br />x跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax
-                    Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Aja<br /><br />x跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax
-                    Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Aja<br /><br />x跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域
-                    <img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2801862717,279628383&fm=27&gp=0.jpg" />
-                    Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Aja<br /><br />x跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax
-                    Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Aja<br /><br />x跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax
-                    Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域
-                    <img src="http://img.zcool.cn/community/0142135541fe180000019ae9b8cf86.jpg@1280w_1l_2o_100sh.png">
-                    Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Aja<br /><br />x跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax
-                    Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域Ajax跨域
+                <div class="pop-wen" v-html="noteMain">
                 </div>
             </div>
-            <div class="cover" onclick="close_pop()"></div>
+            <div class="cover" v-bind:class="{show:show}" @click="popClose"></div>
         </div>
     </body>
-    <!-- <script src="./js/jquery-1.12.2.min.js"></script>
-    <script src="./js/jquery.nicescroll.min.js"></script>
-    <script src="./js/common.js"></script> -->
     <script>
     new Vue({
         el:"#app",
+        mounted(){
+            this.post()
+        },
         data:{
-            link:[
-                {url:'https://icomoon.io/',name:'font图标下载-icomoon'},
-                {url:'http://www.iconfont.cn/',name:'font图标下载-iconfont'},
-                {url:'http://www.easyicon.net/',name:'图标下载-easyicon'},
-                {url:'http://www.qiuziti.com/',name:'字体下载-qiuziti'},
-                {url:'http://www.60logo.com/',name:'logo下载-60logo'},
-                {url:'http://instantlogosearch.com/',name:'logo下载-instantlogosearch'},
-                {url:'http://bigjpg.com/',name:'图片无损放大-bigjpg'},
-                {url:'https://color.adobe.com/zh/explore/newest/?time=all',name:'配色-color'},
-                {url:'http://www.nipic.com/index.html',name:'昵图网'},
-                {url:'http://cli.im/?jdfwkey=qvrim1',name:'二维码生成'},
-                {url:'https://webgradients.com/',name:'css渐变色'},
-                {url:'http://tool.lu/css/',name:'css格式化'},
-                {url:'http://www.css88.com/jqapi-1.9/',name:'JQ Api'},
-                {url:'http://www.imooc.com/',name:'慕课网'},
-                {url:'http://699pic.com/',name:'摄图网'},
-                {url:'http://echarts.baidu.com/index.html',name:'图表-echars'},
-                {url:'http://gj.3gwen.com/tpbase64.html?kbl=',name:'Base64转换'},
-                {url:'http://fanyi.baidu.com/',name:'百度翻译'},
-                {url:'https://github.com/',name:'GitHub'},
-                {url:'https://v3.bootcss.com/components/',name:'Bootstrap'},
-                {url:'https://cn.vuejs.org/v2/api/',name:'Vue.js'},
-                {url:'http://tool.oschina.net/',name:'在线工具'},
-                {url:'http://www.daqianduan.com/',name:'大前端'},
-                {url:'http://www.jq22.com/',name:'JQ22'},
-                {url:'https://www.qdfuns.com/',name:'前端网'}
-            ]
+            link:[],
+            note:[],
+            noteTitle:"",
+            notesubTitle:"",
+            noteMain:"",
+            show:false
         },
         methods:{
-
+            post:function(){
+                axios.get('data/data.json')
+                .then(function (response) {
+                    this.link = response.data.link;
+                    this.note = response.data.note;
+                }.bind(this))
+                .catch(function (error) {
+                    console.log(error);
+                });
+            },
+            pop:function(index){
+                this.noteTitle = this.note[index].title;
+                this.notesubTitle = this.note[index].subTitle;
+                this.noteMain = this.note[index].main;
+                this.show = !this.show;
+            },
+            popClose:function(){
+                this.show = !this.show
+            }
         },
         computed:{
 
-        }
+        },
+
     })
     </script>
 </html>
